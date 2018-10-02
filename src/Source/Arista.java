@@ -5,10 +5,21 @@
  */
 package Source;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author lmejiaf
  */
 public class Arista {
+
+    double valor;
     
+
+    Nodo inicio;
+    Nodo fin;
+
+    int posX, posY, posXF, posYF;
+    Graphics g;
+
 }
