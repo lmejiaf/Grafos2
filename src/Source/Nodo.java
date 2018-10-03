@@ -20,27 +20,25 @@ public class Nodo {
     String nombre;
 
     Graphics g;
-    final int radio = 50;
+
+    static final int DIAMETRO = 50, RADIO = DIAMETRO / 2;
     int posX, posY;
 
     public void conectar(Nodo llegada, double valor) {
-        Arista a = new Arista();
-        a.valor = valor;
-        a.inicio = this;
-        a.fin = llegada;
+        Arista a = new Arista(valor, this, llegada);
         aristas.add(a);
     }
 
-    public void dibujar() {
+    private void dibujar() {
         g.setColor(Color.red);
-        g.fillOval(posX, posY, radio, radio);
+        g.fillOval(posX, posY, DIAMETRO, DIAMETRO);
     }
 
-    public Nodo(String nombre, JPanel lienzo, int posX, int posY) {
+    public Nodo(String nombre, int posX, int posY) {
         this.nombre = nombre;
-        this.posX = posX + posX / 2;
-        this.posY = posY + posY / 2;
-        g = lienzo.getGraphics();
+        this.posX = posX - RADIO;
+        this.posY = posY - RADIO;
+        g = Lienzo.lienzo.getGraphics();
         dibujar();
     }
 
