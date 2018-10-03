@@ -35,5 +35,11 @@ public class Grafo {
     public DefaultComboBoxModel<Nodo> getModeloNodos() {
         return modeloNodos;
     }
+    
+    public void redibujar(){
+        for (Nodo nodo : nodos) {
+            nodo.dibujar();
+        }
+    }
 
 }

@@ -29,7 +29,7 @@ public class Nodo {
         aristas.add(a);
     }
 
-    private void dibujar() {
+    public void dibujar() {
         g.setColor(Color.red);
         g.fillOval(posX, posY, DIAMETRO, DIAMETRO);
     }

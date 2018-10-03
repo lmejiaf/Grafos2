@@ -42,6 +42,13 @@ public class Lienzo extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                formAncestorResized(evt);
+            }
+        });
 
         pcontrol.setBackground(new java.awt.Color(0, 153, 0));
 
@@ -109,6 +116,13 @@ public class Lienzo extends javax.swing.JFrame {
         );
 
         lienzo.setBackground(new java.awt.Color(204, 255, 204));
+        lienzo.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                lienzoAncestorResized(evt);
+            }
+        });
         lienzo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lienzoMouseClicked(evt);
@@ -190,6 +204,16 @@ public class Lienzo extends javax.swing.JFrame {
         jComboBox1.setModel(g.getModeloNodos());
 
     }//GEN-LAST:event_lienzoMouseClicked
+
+    private void formAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formAncestorResized
+        // TODO add your handling code here:
+//        g.redibujar();
+    }//GEN-LAST:event_formAncestorResized
+
+    private void lienzoAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_lienzoAncestorResized
+        // TODO add your handling code here:
+        g.redibujar();
+    }//GEN-LAST:event_lienzoAncestorResized
 
     /**
      * @param args the command line arguments
