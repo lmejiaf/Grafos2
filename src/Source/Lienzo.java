@@ -5,6 +5,9 @@
  */
 package Source;
 
+//import javax.swing.JFrame;
+import javax.swing.JFrame;
+
 /**
  *
  * @author lmejiaf
@@ -17,7 +20,9 @@ public class Lienzo extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public Lienzo() {
+
         initComponents();
+
     }
 
     /**
@@ -42,6 +47,7 @@ public class Lienzo extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(0, 0));
         addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
             public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
             }
@@ -116,6 +122,7 @@ public class Lienzo extends javax.swing.JFrame {
         );
 
         lienzo.setBackground(new java.awt.Color(204, 255, 204));
+        lienzo.setFocusable(false);
         lienzo.addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
             public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
             }
@@ -154,16 +161,16 @@ public class Lienzo extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,8 +207,14 @@ public class Lienzo extends javax.swing.JFrame {
 
     private void lienzoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lienzoMouseClicked
         // TODO add your handling code here:
-        g.add("Luis", evt.getX(), evt.getY());
-        jComboBox1.setModel(g.getModeloNodos());
+        int px= evt.getX();
+        int py= evt.getY();
+        if (!(px - Nodo.RADIO < 0 || px+Nodo.RADIO>Lienzo.lienzo.getWidth() || py + Nodo.RADIO > Lienzo.lienzo.getHeight() || py-Nodo.RADIO < 0 )) {
+            g.add("Luis", px, py);
+              jComboBox1.setModel(g.getModeloNodos());
+        }
+        
+      
 
     }//GEN-LAST:event_lienzoMouseClicked
 
@@ -246,7 +259,8 @@ public class Lienzo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Lienzo().setVisible(true);
+                new Lienzo().setVisible(true);;
+               
             }
         });
     }

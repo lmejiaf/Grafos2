@@ -20,7 +20,8 @@ public class Grafo {
     public void add(String nombre, int px, int py) {
         boolean add = true;
         for (Nodo nodo : nodos) {
-            if (px > nodo.posX - Nodo.DIAMETRO && px < nodo.posX + 2 * Nodo.DIAMETRO && py > nodo.posY - Nodo.DIAMETRO && py < nodo.posY + 2 * Nodo.DIAMETRO) {
+            if ((px > nodo.posX - Nodo.DIAMETRO && px < nodo.posX + 2 * Nodo.DIAMETRO && py > nodo.posY - Nodo.DIAMETRO && py < nodo.posY + 2 * Nodo.DIAMETRO)) {
+//                || px + Nodo.RADIO > Lienzo.lienzo.getWidth() || py + Nodo.RADIO > Lienzo.lienzo.getHeight() || py < 0
                 add = false;
             }
         }
@@ -35,8 +36,8 @@ public class Grafo {
     public DefaultComboBoxModel<Nodo> getModeloNodos() {
         return modeloNodos;
     }
-    
-    public void redibujar(){
+
+    public void redibujar() {
         for (Nodo nodo : nodos) {
             nodo.dibujar();
         }
