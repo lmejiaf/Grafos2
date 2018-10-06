@@ -13,30 +13,32 @@ import java.awt.Graphics;
  * @author lmejiaf
  */
 public final class Arista {
-    
+
     double valor;
-    
+
     Nodo inicio;
     Nodo fin;
-    
+
     int posX, posY, posXF, posYF;
     Graphics g;
-    
+
     public Arista(double valor, Nodo inicio, Nodo fin) {
         this.valor = valor;
         this.inicio = inicio;
         this.fin = fin;
-        this.posX = inicio.posX+ Nodo.RADIO;
+        this.posX = inicio.posX + Nodo.RADIO;
         this.posY = inicio.posY;
         this.posXF = fin.posX;
         this.posYF = fin.posY;
         g = Lienzo.lienzo.getGraphics();
         dibujar();
     }
-    
+
     public void dibujar() {
         g.setColor(Color.WHITE);
-        g.drawLine(posX, posY, posXF, posYF);
+        g.drawLine(posX+Nodo.RADIO, posY, posXF+Nodo.RADIO, posYF);
     }
+
+
     
 }

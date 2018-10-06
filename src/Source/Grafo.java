@@ -26,9 +26,11 @@ public class Grafo {
             }
         }
         if (add == true) {
-            Nodo n = new Nodo(nombre, px, py);
+            Nodo n = new Nodo(px, py);
             nodos.add(n);
             modeloNodos.addElement(n);
+        } else {
+            seleccionar(px, py);
         }
 
     }
@@ -38,9 +40,22 @@ public class Grafo {
     }
 
     public void redibujar() {
-        for (Nodo nodo : nodos) {
+        nodos.forEach((nodo) -> {
             nodo.dibujar();
+        });
+    }
+
+    public void seleccionar(int px, int py) {
+        for (Nodo nodo : nodos) {
+            if ((px > nodo.posX && px < nodo.posX + Nodo.DIAMETRO && py > nodo.posY && py < nodo.posY + Nodo.DIAMETRO)) {
+                Nodo a = nodo.seleccionar();
+                Lienzo.listaAdyacentes.setModel(a.adyacentes);
+            } else {
+                nodo.marcar();
+            }
         }
+
+//       
     }
 
 }

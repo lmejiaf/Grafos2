@@ -8,7 +8,7 @@ package Source;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
-import javax.swing.JPanel;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -18,7 +18,9 @@ public class Nodo {
 
     ArrayList<Arista> aristas = new ArrayList();
     String nombre;
-
+    DefaultComboBoxModel<Nodo> adyacentes= new DefaultComboBoxModel();
+    
+    
     Graphics g;
 
     static final int DIAMETRO = 50, RADIO = DIAMETRO / 2;
@@ -27,6 +29,8 @@ public class Nodo {
     public void conectar(Nodo llegada, double valor) {
         Arista a = new Arista(valor, this, llegada);
         aristas.add(a);
+        adyacentes.addElement(llegada);
+        
     }
 
     public void dibujar() {
@@ -34,12 +38,24 @@ public class Nodo {
         g.fillOval(posX, posY, DIAMETRO, DIAMETRO);
     }
 
-    public Nodo(String nombre, int posX, int posY) {
-        this.nombre = nombre;
+    public Nodo seleccionar() {
+        g.setColor(Color.BLUE);
+        g.fillOval(posX, posY, DIAMETRO, DIAMETRO);
+        return this;
+    }
+
+    public void marcar() {
+        g.setColor(Color.YELLOW);
+        g.fillOval(posX, posY, DIAMETRO, DIAMETRO);
+    }
+
+    public Nodo(int posX, int posY) {
         this.posX = posX - RADIO;
         this.posY = posY - RADIO;
         g = Lienzo.lienzo.getGraphics();
+        this.nombre = "";
         dibujar();
     }
+    
 
 }
