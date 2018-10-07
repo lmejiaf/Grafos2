@@ -26,19 +26,17 @@ public final class Arista {
         this.valor = valor;
         this.inicio = inicio;
         this.fin = fin;
-        this.posX = inicio.posX + Nodo.RADIO;
-        this.posY = inicio.posY;
-        this.posXF = fin.posX;
-        this.posYF = fin.posY;
+        this.posX = inicio.centro[0];
+        this.posY = inicio.centro[1];
+        this.posXF = fin.centro[0];
+        this.posYF = fin.centro[0];
         g = Lienzo.lienzo.getGraphics();
         dibujar();
     }
 
     public void dibujar() {
-        g.setColor(Color.WHITE);
-        g.drawLine(posX+Nodo.RADIO, posY, posXF+Nodo.RADIO, posYF);
+        g.setColor(Color.BLACK);
+        g.drawLine(posX, posY, posXF, posYF);
     }
 
-
-    
 }
